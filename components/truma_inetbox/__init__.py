@@ -405,7 +405,7 @@ async def truma_inetbox_heater_set_target_room_temperature_to_code(config, actio
     template_ = await cg.templatable(config[CONF_TEMPERATURE], args, cg.uint8)
     cg.add(var.set_temperature(template_))
 
-            template_ = await cg.templatable(config[CONF_HEATING_MODE], args, HeatingMode_dummy_ns)
+    template_ = await cg.templatable(config[CONF_HEATING_MODE], args, HeatingMode_dummy_ns)
     cg.add(var.set_heating_mode(template_))
 
     return var
