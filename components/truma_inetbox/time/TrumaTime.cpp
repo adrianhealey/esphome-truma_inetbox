@@ -27,7 +27,7 @@ bool TrumaTime::read_time() {
   }
   auto status_clock = this->parent_->get_clock()->get_status();
 
-  time::ESPTime rtc_time{.second = status_clock->clock_second,
+ESPTime rtc_time{.second = status_clock->clock_second,
                          .minute = status_clock->clock_minute,
                          .hour = status_clock->clock_hour,
                          .day_of_week = 1,
