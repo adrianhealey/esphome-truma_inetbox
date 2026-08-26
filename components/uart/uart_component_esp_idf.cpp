@@ -41,7 +41,10 @@ uart_config_t IDFUARTComponent::get_config_() {
       break;
   }
 
-  uart_config_t uart_config;
+    // Zero-init: newer ESP-IDF versions add extra uart_config_t fields (e.g. sleep-retention
+    // flags); leaving them uninitialized can make uart_param_config() fail intermittently
+    // with ESP_ERR_NOT_SUPPORTED depending on stack garbage (ported from havanti/esphome-truma v1.0.23).
+    uart_config_t uart_config{};
   uart_config.baud_rate = this->baud_rate_;
   uart_config.data_bits = data_bits;
   uart_config.parity = parity;
